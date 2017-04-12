@@ -1,0 +1,27 @@
+# OSX and ide's folder attributes
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+*.sublime-*
+.idea
+
+# always-ignore extensions
+*.diff
+*.err
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+
+node_modules
+*.log
+lib
