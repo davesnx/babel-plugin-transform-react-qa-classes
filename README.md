@@ -1,8 +1,8 @@
-### Babel plugin transform React QA Classes
+## Babel plugin transform React QA Classes
 
 This plugin adds the component name as a `data-qa` in each React Component.
 
-#### Why?
+### Why?
 
 Basically the idea is to facilitate Automate Testing on Frontend Applications.
 Automate Frontend highly requires get the DOMElements and interact with them, adding `data-qa` attributes make it more easy. 
@@ -19,13 +19,13 @@ That depends on the Test suit, with (`PageObject`)[https://github.com/cheezy/pag
 div(:component, data_qa: 'component')
 ```
 
-#### Install
+### Install
 ```bash
 npm install --save-dev babel-plugin-transform-react-qa-classes
 # or yarn add -d
 ```
 
-#### Use
+### Use
 `.babelrc`
 ```json
 {
@@ -38,15 +38,15 @@ npm install --save-dev babel-plugin-transform-react-qa-classes
 }
 ```
 
-Note: Adding this plugin only on `DEV` mode (or `PREPROD`) allows not having this `data-qa` attributes on production.
+> Note: Adding this plugin only on `DEV` mode (or `PREPROD`) allows not having this `data-qa` attributes on production.
 
-with CLI
+#### with CLI
 
 ```bash
 babel --plugins transform-react-qa-classes component.js
 ```
 
-or programatically with (babel-core)[https://www.npmjs.com/package/babel-core]
+#### or programatically with (babel-core)[https://www.npmjs.com/package/babel-core]
 
 ```js
 require('babel-core').transform(`code`, {
@@ -54,7 +54,7 @@ require('babel-core').transform(`code`, {
 })
 ```
 
-#### Collaborate
+### Collaborate
 
 This plugin is in a early stage and potentially can change, I will follow semVer convention.
 Even the name isn't declarative for what it does and it just solves one problem with QA Automate, can be more generic.
