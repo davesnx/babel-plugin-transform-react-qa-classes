@@ -5,7 +5,7 @@ This plugin adds the component name as a `data-qa` in each React Component.
 ### Why?
 
 Basically the idea is to facilitate Automate Testing on Frontend Applications.
-Automate Frontend highly requires get the DOMElements and interact with them, adding `data-qa` attributes make it more easy. 
+Automate Frontend highly requires get the DOMElements and interact with them, adding `data-qa` attributes make it more easy.
 
 They would only need to get the element like that:
 

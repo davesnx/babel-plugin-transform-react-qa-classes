@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-react-qa-classes",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Add component's name in `data-qa` attributes to React Components Edit",
   "repository": "https://github.com/davesnx/babel-plugin-transform-react-qa-classes",
   "author": "davesnx <dsnxmoreno@gmail.com>",
@@ -10,8 +10,7 @@
     "build": "babel src -d lib",
     "test": "mocha --compilers js:babel-register",
     "test:watch": "npm run test -- --watch",
-    "prepublish": "npm run clean && npm run build",
-    "postinstall": "npm run build"
+    "prepublish": "npm run clean && npm run build"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -33,5 +32,9 @@
       "es2015",
       "stage-0"
     ]
-  }
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ]
 }
