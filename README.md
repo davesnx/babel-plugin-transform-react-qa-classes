@@ -13,7 +13,7 @@ They would only need to get the element like that:
 document.querySelectorAll('[data-qa="component"]')
 ```
 
-That depends on the Test suit, with (`PageObject`)[https://github.com/cheezy/page-object] can work like that:
+That depends on the Test suit, with [`PageObject`](https://github.com/cheezy/page-object) can work like that:
 
 ```ruby
 div(:component, data_qa: 'component')
@@ -46,7 +46,7 @@ npm install --save-dev babel-plugin-transform-react-qa-classes
 babel --plugins transform-react-qa-classes component.js
 ```
 
-#### or programatically with (babel-core)[https://www.npmjs.com/package/babel-core]
+#### or programatically with [babel-core](https://www.npmjs.com/package/babel-core)
 
 ```js
 require('babel-core').transform(`code`, {
