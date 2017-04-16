@@ -1,4 +1,4 @@
-## Babel plugin transform React QA Classes
+## Babel plugin transform React qa classes
 
 This plugin adds the component name as a `data-qa` in each React Component.
 
