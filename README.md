@@ -11,28 +11,28 @@ This plugin adds the component name as a `data-qa` in each React Component.
   <tr>
     <td>
       <pre>
-          class componentName extends Component {
-            render () {
-              return (
-                &lt;div&gt;
-                  &lt;div&gt;Hello world&lt;/div&gt;
-                &lt;/div&gt;
-              )
-            }
-          }
+class componentName extends Component {
+  render () {
+    return (
+      &lt;div&gt;
+        &lt;div&gt;Hello world&lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }
+}
       </pre>
     </td>
     <td>
       <pre>
-          class componentName extends Component {
-            render () {
-              return (
-                &lt;div className='componentname'&gt;
-                  &lt;div&gt;Hello world&lt;/div&gt;
-                &lt;/div&gt;
-              )
-            }
-          }
+class componentName extends Component {
+  render () {
+    return (
+      &lt;div className='componentname'&gt;
+        &lt;div&gt;Hello world&lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }
+}
       </pre>
     </td>
   </tr>
