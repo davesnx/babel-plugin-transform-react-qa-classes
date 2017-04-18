@@ -27,7 +27,7 @@ class componentName extends Component {
 class componentName extends Component {
   render () {
     return (
-      &lt;div className='componentname'&gt;
+      &lt;div data-qa='componentname'&gt;
         &lt;div&gt;Hello world&lt;/div&gt;
       &lt;/div&gt;
     )
