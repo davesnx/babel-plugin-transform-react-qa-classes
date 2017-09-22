@@ -1,8 +1,6 @@
 {
-    "plugins": [
-        "syntax-jsx",
-        [
-            "../../../../src"
-        ]
-    ]
+  "plugins": [
+      "syntax-jsx",
+      ["../../../../src"]
+  ]
 }
