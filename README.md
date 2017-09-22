@@ -85,7 +85,7 @@ You can specify the format of the name that you want and the name of the attribu
     "dev": {
       "plugins": ["transform-react-qa-classes", {
         "attribute": "qa-property",
-        "format": "camelCase"
+        "format": "camel"
       }]
     }
   }
@@ -107,12 +107,3 @@ require('babel-core').transform(`code`, {
   plugins: ['transform-react-qa-classes']
 })
 ```
-
-### Collaborate
-
-This plugin is in a early stage and potentially can change, I will follow semVer convention.
-Even the name isn't declarative for what it does and it just solves one problem with QA Automate, can be more generic.
-
-### How it works
-
-It's extremly dummy for now but you can get an idea on the (tests)[test/README.md]
