@@ -1,11 +1,47 @@
 ## Babel plugin transform React qa classes
+[![Build Status](https://travis-ci.org/davesnx/babel-plugin-transform-react-qa-classes.svg?branch=master)](https://travis-ci.org/davesnx/babel-plugin-transform-react-qa-classes) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/babel-plugin-transform-react-qa-classes)
 
 This plugin adds the component name as a `data-qa` in each React Component.
+
+<table>
+  <tr>
+    <th>Before</th>
+    <th>After</th> 
+  </tr>
+  <tr>
+    <td>
+      <pre>
+class componentName extends Component {
+  render () {
+    return (
+      &lt;div&gt;
+        &lt;div&gt;Hello world&lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+      </pre>
+    </td>
+    <td>
+      <pre>
+class componentName extends Component {
+  render () {
+    return (
+      &lt;div data-qa='componentname'&gt;
+        &lt;div&gt;Hello world&lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+      </pre>
+    </td>
+  </tr>
+</table>
 
 ### Why?
 
 Basically the idea is to facilitate Automate Testing on Frontend Applications.
-Automate Frontend highly requires get the DOMElements and interact with them, adding `data-qa` attributes make it more easy. 
+Automate Frontend highly requires get the DOMElements and interact with them, adding `data-qa` attributes make it more easy.
 
 They would only need to get the element like that:
 

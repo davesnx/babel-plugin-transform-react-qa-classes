@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const componentName = () => {
-  return <div data-qa="componentname">
+  return <div data-qa="component-name">
     <h1>Hello world</h1>
   </div>;
 };

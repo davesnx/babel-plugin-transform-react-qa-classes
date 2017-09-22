@@ -1,3 +1,5 @@
+import kebab from 'lodash.kebabcase'
+
 const addStringLiteral = (t, returnStatement, jsxId, str) => {
   const arg = returnStatement.get('argument')
   if (!arg.isJSXElement()) return
@@ -6,7 +8,7 @@ const addStringLiteral = (t, returnStatement, jsxId, str) => {
   openingElement.node.attributes.push(
     t.jSXAttribute(
       t.jSXIdentifier(jsxId),
-      t.stringLiteral(str.toLowerCase())
+      t.stringLiteral(kebab(str))
     )
   )
 }
@@ -35,9 +37,13 @@ export default function ({types: t}) {
           )
         })
 
+        if (!render || !render.traverse) {
+          return
+        }
+
         render.traverse({
           ReturnStatement (returnStatement) {
-            addStringLiteral(t, returnStatement, 'data-qa', name.node.name.toLowerCase())
+            addStringLiteral(t, returnStatement, 'data-qa', name.node.name)
           }
         })
       }
