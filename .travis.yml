@@ -22,4 +22,4 @@ before_install:
   - npm set progress false
 
 after_success:
-  - npm run semantic-release || true
+  # - npm run semantic-release || true
