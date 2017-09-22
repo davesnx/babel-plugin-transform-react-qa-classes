@@ -94,3 +94,7 @@ require('babel-core').transform(`code`, {
 
 This plugin is in a early stage and potentially can change, I will follow semVer convention.
 Even the name isn't declarative for what it does and it just solves one problem with QA Automate, can be more generic.
+
+### How it works
+
+It's extremly dummy for now but you can get an idea on the (tests)[test/README.md]
