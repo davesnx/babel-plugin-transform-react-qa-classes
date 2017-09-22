@@ -8,7 +8,6 @@ node_js:
 cache:
   directories:
     - ~/.npm
-    - ~/.yarn-cache
 
 branches:
   only:
@@ -21,9 +20,4 @@ before_install:
   # Setup package managers.
   - npm set loglevel error
   - npm set progress false
-  - npm i -g yarn@0.16.1
-  - yarn -V
 
-install:
-  # Install packages.
-  - yarn
