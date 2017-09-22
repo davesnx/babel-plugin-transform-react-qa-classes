@@ -27,7 +27,7 @@ class componentName extends Component {
 class componentName extends Component {
   render () {
     return (
-      &lt;div data-qa='componentname'&gt;
+      &lt;div data-qa='component-name'&gt;
         &lt;div&gt;Hello world&lt;/div&gt;
       &lt;/div&gt;
     )
@@ -75,6 +75,24 @@ npm install --save-dev babel-plugin-transform-react-qa-classes
 ```
 
 > Note: Adding this plugin only on `DEV` mode (or `PREPROD`) allows not having this `data-qa` attributes on production.
+
+You can specify the format of the name that you want and the name of the attribute:
+
+```json
+{
+  "presets": ["es2015", "react"], // This asumes that you use those presets
+  "env": {
+    "dev": {
+      "plugins": ["transform-react-qa-classes", {
+        "attribute": "qa-property",
+        "format": "camelCase"
+      }]
+    }
+  }
+}
+```
+
+> Note: format can be: "camel" (camelCase), "snake" (snake_case) or "kebab" (kebab-case).
 
 #### with CLI
 
