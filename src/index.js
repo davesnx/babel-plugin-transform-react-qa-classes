@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default function ({types: t}) {
   return {
     visitor: {
@@ -12,6 +14,10 @@ export default function ({types: t}) {
           )
         })
 
+        if (!render || !render.traverse) {
+          return
+        }
+
         render.traverse({
           ReturnStatement(returnStatement) {
             let arg = returnStatement.get('argument')
@@ -21,7 +27,7 @@ export default function ({types: t}) {
             openingElement.node.attributes.push(
               t.jSXAttribute(
                 t.jSXIdentifier('data-qa'),
-                t.stringLiteral(name.node.name.toLowerCase())
+                t.stringLiteral(_.kebabCase(name.node.name))
               )
             )
           }
