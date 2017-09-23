@@ -21,5 +21,8 @@ before_install:
   - npm set loglevel error
   - npm set progress false
 
+after_script:
+  - npm prune
+
 after_success:
   # - npm run semantic-release || true
