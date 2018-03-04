@@ -58,7 +58,7 @@ div(:component, data_qa: 'component')
 ### Install
 ```bash
 npm install --save-dev babel-plugin-transform-react-qa-classes
-# or yarn add -d
+# or yarn add -D
 ```
 
 ### Use
