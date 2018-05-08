@@ -1,13 +1,14 @@
 language: node_js
 sudo: false
 node_js:
+  - 8
   - 7
   - 6
-  - 4
 
 cache:
   directories:
     - ~/.npm
+    - node_modules
 
 branches:
   only:
@@ -21,8 +22,15 @@ before_install:
   - npm set loglevel error
   - npm set progress false
 
+script:
+  - npm run lint && npm run test
+
 after_script:
   - npm prune
 
-after_success:
-  # - npm run semantic-release || true
+deploy:
+  provider: script
+  script: npm run travis-deploy-once "npm run semantic-release"
+  skip_cleanup: true
+  on:
+    branch: master
