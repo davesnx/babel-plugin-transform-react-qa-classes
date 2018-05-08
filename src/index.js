@@ -5,13 +5,11 @@ export default function ({types: t}) {
     visitor: {
       ArrowFunctionExpression (path, state) {
         const options = checkValidOptions(state)
+        if (!path.parent) return
         const componentName = path.parent.id.name
 
         const functionBody = path.get('body').get('body')
-        const returnStatement = functionBody.find((c) => {
-          return c.type === 'ReturnStatement'
-        })
-
+        const returnStatement = functionBody.find((c) => c.type === 'ReturnStatement')
         const arg = returnStatement.get('argument')
         if (!arg.isJSXElement()) return
 
@@ -49,7 +47,7 @@ export default function ({types: t}) {
             openingElement.node.attributes.push(
               t.jSXAttribute(
                 t.jSXIdentifier(options.attribute),
-                t.stringLiteral(options.format(name.node.name))
+                t.stringLiteral(options.format(name.node && name.node.name))
               )
             )
           }
