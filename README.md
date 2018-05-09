@@ -63,10 +63,10 @@ npm install --save-dev babel-plugin-transform-react-qa-classes
 ```
 
 ### Use
-`.babelrc`
+Inside `.babelrc`:
 ```json
 {
-  "presets": ["es2015", "react"], // This asumes that you use those presets
+  "presets": ["es2015", "react"],
   "env": {
     "dev": {
       "plugins": ["transform-react-qa-classes"]
