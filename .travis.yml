@@ -23,7 +23,7 @@ before_install:
   - npm set progress false
 
 script:
-  - npm run lint && npm run test
+  - npm run test
 
 after_script:
   - npm prune
