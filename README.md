@@ -109,8 +109,10 @@ require('babel-core').transform(`code`, {
 })
 ```
 
-#### Contributing
-PRs for additional features are welcome! There's still a few feature that are missing, for example each change of the state of the component is added as a `data-qa-state` into the DOM. Support for more libraries.
+## Contributing
+PRs for additional features are welcome!
+
+There's still a few feature that are missing, for example each change of the state of the component is added as a `data-qa-state` into the DOM. Support for more libraries.
 
 I recommend checking this [handbook](https://github.com/jamiebuilds/babel-handbook) about how to write babel plugins in order to learn. 
 
@@ -120,7 +122,10 @@ I recommend checking this [handbook](https://github.com/jamiebuilds/babel-handbo
 - Do the code
 - Create a PR to this repo.
 
-There's a githook setted up when you push it runs the tests. 
+In order to do the commits I prefer to use [Commitizen](https://github.com/commitizen/cz-cli) and there's a githook setted up when you push it runs the tests.
 
-#### License
+Is your company using it? I would love to know more! 
+Could you answer this small [typeform](https://davesnx.typeform.com/to/JrKgBc) :P
+
+## License
 MIT
