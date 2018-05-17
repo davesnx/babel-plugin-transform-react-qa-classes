@@ -8,7 +8,13 @@ export default function ({types: t}) {
         if (!path.parent) return
         const componentName = path.parent.id.name
 
+
         const functionBody = path.get('body').get('body')
+
+        if (!functionBody) {
+
+        }
+
         const returnStatement = functionBody.find((c) => c.type === 'ReturnStatement')
         const arg = returnStatement.get('argument')
         if (!arg.isJSXElement()) return
