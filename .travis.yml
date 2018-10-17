@@ -1,11 +1,13 @@
 language: node_js
 sudo: false
+
 node_js:
   - 8
   - 7
   - 6
 
 cache:
+  yarn: true
   directories:
     - ~/.npm
     - node_modules
@@ -15,22 +17,15 @@ branches:
     - master
 
 before_install:
-  # Use exact Node version.
-  - nvm use $TRAVIS_NODE_VERSION
-
-  # Setup package managers.
-  - npm set loglevel error
-  - npm set progress false
+  - "curl -o- -L https://yarnpkg.com/install.sh | bash"
+  - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 script:
-  - npm run test
-
-after_script:
-  - npm prune
+  - yarn test
 
 deploy:
   provider: script
-  script: npm run travis-deploy-once "npm run semantic-release"
+  script: yarn travis-deploy-once "yarn semantic-release"
   skip_cleanup: true
   on:
     branch: master

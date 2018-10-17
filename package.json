@@ -10,8 +10,8 @@
     "clean": "rm -rf lib",
     "build": "babel src -d lib",
     "test": "mocha --compilers js:babel-register",
-    "test:watch": "npm run test -- --watch",
-    "prepublishOnly": "npm run clean && npm run build",
+    "test:watch": "yarn test -- --watch",
+    "prepublishOnly": "yarn clean && yarn build",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
