@@ -6,7 +6,7 @@ import isString from 'lodash.isstring'
 const langTransforms = {
   kebab: kebabCase,
   camel: camelCase,
-  snake: kebabCase
+  snake: snakeCase
 }
 
 const isValidOption = opt => {
