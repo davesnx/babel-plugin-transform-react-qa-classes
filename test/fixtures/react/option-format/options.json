@@ -1,8 +1,11 @@
 {
   "plugins": [
     "syntax-jsx",
-    ["../../../../src", {
-      "format": "snake"
-    }]
+    [
+      "../../../../src",
+      {
+        "format": "kebab"
+      }
+    ]
   ]
 }

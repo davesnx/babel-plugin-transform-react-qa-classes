@@ -1,6 +1,6 @@
 import checkValidOptions from './options'
 
-export default function ({types: t}) {
+export default function ({ types: t }) {
   return {
     visitor: {
       ArrowFunctionExpression (path, state) {
@@ -9,7 +9,9 @@ export default function ({types: t}) {
         const componentName = path.parent.id.name
 
         const functionBody = path.get('body').get('body')
-        const returnStatement = functionBody.find((c) => c.type === 'ReturnStatement')
+        const returnStatement = functionBody.find(
+          c => c.type === 'ReturnStatement'
+        )
         const arg = returnStatement.get('argument')
         if (!arg.isJSXElement()) return
 

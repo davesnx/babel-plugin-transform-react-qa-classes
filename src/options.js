@@ -9,15 +9,13 @@ const langTransforms = {
   snake: snakeCase
 }
 
-const isValidOption = opt => {
-  return opt && isString(opt)
-}
+const isValidOption = opt => opt && isString(opt)
 
-const validTranform = (opt) => {
+const validTranform = opt => {
   return Object.keys(langTransforms).indexOf(opt) > -1
 }
 
-const checkValidOptions = (state) => {
+const checkValidOptions = state => {
   let attribute = 'data-qa'
   let format = 'kebab'
 
