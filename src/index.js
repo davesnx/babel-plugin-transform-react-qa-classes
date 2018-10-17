@@ -5,7 +5,7 @@ export default function ({ types: t }) {
     visitor: {
       ArrowFunctionExpression (path, state) {
         const options = checkValidOptions(state)
-        if (!path.parent) return
+        if (!path.parent.id || !path.parent.id.name) return
         const componentName = path.parent.id.name
 
         const functionBody = path.get('body').get('body')
