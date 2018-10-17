@@ -12,8 +12,6 @@
     "test": "mocha --compilers js:babel-register",
     "test:watch": "npm run test -- --watch",
     "prepublishOnly": "npm run clean && npm run build",
-    "commitmsg": "validate-commit-msg",
-    "prepush": "npm test",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
@@ -29,6 +27,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "husky": "^1.1.2",
     "mocha": "^3.1.2",
     "semantic-release": "^15.10.3",
     "travis-deploy-once": "^5.0.9"
@@ -49,5 +48,10 @@
   "files": [
     "lib",
     "README.md"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test"
+    }
+  }
 }
