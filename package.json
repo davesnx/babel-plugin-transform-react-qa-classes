@@ -1,11 +1,9 @@
 {
   "name": "babel-plugin-transform-react-qa-classes",
-  "version": "0.0.6",
+  "version": "0.0.0-semantic-release",
   "license": "MIT",
-  "description":
-    "Add component's name in `data-qa` attributes to React Components Edit",
-  "repository":
-    "https://github.com/davesnx/babel-plugin-transform-react-qa-classes",
+  "description": "Add component's name in `data-qa` attributes to React Components Edit",
+  "repository": "https://github.com/davesnx/babel-plugin-transform-react-qa-classes",
   "author": "davesnx <dsnxmoreno@gmail.com>",
   "main": "lib/index.js",
   "scripts": {
@@ -35,9 +33,21 @@
     "semantic-release": "^15.4.0",
     "travis-deploy-once": "^5.0.0"
   },
-  "keywords": ["babel", "plugin", "react", "component", "qa-classes"],
+  "keywords": [
+    "babel",
+    "plugin",
+    "react",
+    "component",
+    "qa-classes"
+  ],
   "babel": {
-    "presets": ["es2015", "stage-0"]
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
   },
-  "files": ["lib", "README.md"]
+  "files": [
+    "lib",
+    "README.md"
+  ]
 }
