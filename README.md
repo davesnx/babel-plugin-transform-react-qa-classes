@@ -6,7 +6,7 @@ This babel plugin adds the component name as a `data-qa` in each React Component
 <table>
   <tr>
     <th>Before</th>
-    <th>After</th> 
+    <th>After</th>
   </tr>
   <tr>
     <td>
@@ -114,7 +114,7 @@ PRs for additional features are welcome!
 
 There's still a few feature that are missing, for example each change of the state of the component is added as a `data-qa-state` into the DOM. Support for more libraries.
 
-I recommend checking this [handbook](https://github.com/jamiebuilds/babel-handbook) about how to write babel plugins in order to learn. 
+I recommend checking this [handbook](https://github.com/jamiebuilds/babel-handbook) about how to write babel plugins in order to learn.
 
 - Clone the repo: `git clone https://github.com/davesnx/babel-plugin-transform-react-qa-classes`
 - Fork it & set origin as this repo: `git remote set-url origin https://github.com/YOUR_USERNAME/babel-plugin-transform-react-qa-classes.git`
@@ -124,8 +124,10 @@ I recommend checking this [handbook](https://github.com/jamiebuilds/babel-handbo
 
 In order to do the commits I prefer to use [Commitizen](https://github.com/commitizen/cz-cli) and there's a githook setted up when you push it runs the tests.
 
-Is your company using it? I would love to know more! 
-Could you answer this small [typeform](https://davesnx.typeform.com/to/JrKgBc) :P
+## Feedback
+
+Is your company using it? I would love to know more!
+Could you answer this small [Typeform](https://davesnx.typeform.com/to/JrKgBc) :P
 
 ## License
 MIT
