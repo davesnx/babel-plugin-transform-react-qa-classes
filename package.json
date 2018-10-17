@@ -3,7 +3,10 @@
   "version": "0.0.0-semantic-release",
   "license": "MIT",
   "description": "Add component's name in `data-qa` attributes to React Components Edit",
-  "repository": "https://github.com/davesnx/babel-plugin-transform-react-qa-classes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davesnx/babel-plugin-transform-react-qa-classes.git"
+  },
   "author": "davesnx <dsnxmoreno@gmail.com>",
   "main": "lib/index.js",
   "scripts": {
