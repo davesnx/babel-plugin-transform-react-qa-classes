@@ -1,4 +1,4 @@
-It uses (`babel-helper-plugin-test-runner`)[https://github.com/babel/babel/tree/master/packages/babel-helper-plugin-test-runner] that actually isn't recommened to use outside Babel monorepo, but if you follow the folder structure for the fixtures works perfectly.
+It uses [`babel-helper-plugin-test-runner`](https://github.com/babel/babel/tree/master/packages/babel-helper-plugin-test-runner) that actually isn't recommened to use outside Babel monorepo, but if you follow the folder structure for the fixtures works perfectly.
 
 The idea behind that is create the tests based on the folders and run babel-core on `actual.js` and comparing it to `expected.js` given a .babelrc with the options.
 
