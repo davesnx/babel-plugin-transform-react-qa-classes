@@ -1,27 +1,63 @@
 import checkValidOptions from './options'
 
-export default function ({ types: t }) {
+function isReactFragment (openingElement) {
+  return (
+    openingElement.node.name.name === 'Fragment' ||
+    (openingElement.node.name.type === 'JSXMemberExpression' &&
+      openingElement.node.name.object.name === 'React' &&
+      openingElement.node.name.property.name === 'Fragment')
+  );
+}
+
+function functionBodyPushAttributes (t, path, options, componentName) {
+  let openingElement = null
+  const functionBody = path.get('body').get('body')
+  if (functionBody.parent && functionBody.parent.type === 'JSXElement') {
+    const jsxElement = functionBody.find((c) => {
+      return c.type === 'JSXElement'
+    })
+    if (!jsxElement) return
+    openingElement = jsxElement.get('openingElement')
+  } else {
+    const returnStatement = functionBody.find((c) => {
+      return c.type === 'ReturnStatement'
+    })
+    if (!returnStatement) return
+
+    const arg = returnStatement.get('argument')
+    if (!arg.isJSXElement()) return
+
+    openingElement = arg.get('openingElement')
+  }
+
+  if (!openingElement) return
+  if (isReactFragment(openingElement)) return
+
+  openingElement.node.attributes.push(
+    t.jSXAttribute(
+      t.jSXIdentifier(options.attribute),
+      t.stringLiteral(options.format(componentName))
+    )
+  )
+}
+
+export default function ({types: t}) {
   return {
     visitor: {
+      FunctionDeclaration (path, state) {
+        if (!path.node.id || !path.node.id.name) return;
+
+        const options = checkValidOptions(state)
+        const componentName = path.node.id.name
+
+        functionBodyPushAttributes(t, path, options, componentName)
+      },
       ArrowFunctionExpression (path, state) {
         const options = checkValidOptions(state)
         if (!path.parent.id || !path.parent.id.name) return
         const componentName = path.parent.id.name
 
-        const functionBody = path.get('body').get('body')
-        const returnStatement = functionBody.find(
-          c => c.type === 'ReturnStatement'
-        )
-        const arg = returnStatement.get('argument')
-        if (!arg.isJSXElement()) return
-
-        let openingElement = arg.get('openingElement')
-        openingElement.node.attributes.push(
-          t.jSXAttribute(
-            t.jSXIdentifier(options.attribute),
-            t.stringLiteral(options.format(componentName))
-          )
-        )
+        functionBodyPushAttributes(t, path, options, componentName)
       },
       ClassDeclaration (path, state) {
         let name = path.get('id')
@@ -45,7 +81,9 @@ export default function ({ types: t }) {
             const arg = returnStatement.get('argument')
             if (!arg.isJSXElement()) return
 
-            let openingElement = arg.get('openingElement')
+            const openingElement = arg.get('openingElement')
+            if (isReactFragment(openingElement)) return
+
             openingElement.node.attributes.push(
               t.jSXAttribute(
                 t.jSXIdentifier(options.attribute),
