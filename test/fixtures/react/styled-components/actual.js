@@ -11,6 +11,10 @@ const withChain = styled.div.withConfig()`
   color: black;
 `
 
+const withInterpolation = styled.div`
+  color: ${Colors.black};
+`
+
 const el = styled(El)`
   color: black;
 `

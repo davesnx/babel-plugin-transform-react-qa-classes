@@ -36,12 +36,9 @@ export default function TaggedTemplateExpression(path, state) {
   // hoisted helpers in closure
   function insertBefore(node, id) {
     return t.callExpression(t.memberExpression(node, t.identifier('attrs')), [
-      t.arrowFunctionExpression(
-        [],
-        t.objectExpression([
-          t.objectProperty(t.StringLiteral(options.attribute), t.StringLiteral(id))
-        ])
-      )
+      t.objectExpression([
+        t.objectProperty(t.StringLiteral(options.attribute), t.StringLiteral(id))
+      ])
     ])
   }
   function isStyledPrefix(node) {
