@@ -1,20 +1,25 @@
-import checkValidOptions from './options'
+import * as _path from 'path'
 import * as t from 'babel-types'
+
+import checkValidOptions from './options'
 
 export default function TaggedTemplateExpression(path, state) {
   const options = checkValidOptions(state)
   const scope = path.scope
 
   try {
+    // simple case
     if (isStyledPrefix(path.node.tag)) {
       const id = getIdFrom(path.parentPath)
       if (!id) return
       path.node.tag = insertBefore(path.node.tag, id)
       return
     }
+
+    // chained case.  traverse until prefix found.
+    // NB: styled-component chain api is always CallExpression+MemberExpression pairs.
     let node = path.node.tag
     while (true) {
-      if (!node.callee) debugger
       if (!node || !node.callee) break
       if (isStyledPrefix(node.callee.object)) {
         const id = getIdFrom(path.parentPath)
@@ -24,11 +29,11 @@ export default function TaggedTemplateExpression(path, state) {
       }
       node = node.callee.object
     }
-  } catch (e) {
-    console.log(e)
-    return
-  }
+  } catch (e) {}
 
+  return
+
+  // hoisted helpers in closure
   function insertBefore(node, id) {
     return t.callExpression(t.memberExpression(node, t.identifier('attrs')), [
       t.arrowFunctionExpression(
@@ -53,14 +58,22 @@ export default function TaggedTemplateExpression(path, state) {
     }
   }
   function getIdFrom(parentPath) {
-    while (parentPath && !parentPath.node.id && !parentPath.node.left) {
-      parentPath = parentPath.parentPath
+    if (t.isVariableDeclarator(parentPath.node)) {
+      return parentPath.node.id.name
     }
-    const id =
-      parentPath &&
-      parentPath.node &&
-      ((parentPath.node.id && parentPath.node.id.name) ||
-        (parentPath.node.left && parentPath.node.left.name))
-    return id
+    if (t.isArrowFunctionExpression(parentPath.node)) {
+      if (t.isVariableDeclarator(parentPath.parentPath.node)) {
+        return parentPath.parentPath.node.id.name
+      }
+    }
+    if (t.isExportDefaultDeclaration(parentPath.node)) {
+      const path = state.file.opts.filename
+      const filename = _path.parse(path).name
+      if (filename === 'index') {
+        const parent = _path.basename(_path.dirname(filename))
+        return parent
+      }
+      return filename
+    }
   }
 }
