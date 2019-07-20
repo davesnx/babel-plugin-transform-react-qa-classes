@@ -10,13 +10,13 @@ const basic = styled.div.attrs({
 `;
 
 const withChain = styled.div.attrs({
-  'data-qa': 'withChain'
+  'data-qa': 'with-chain'
 }).withConfig()`
   color: black;
 `;
 
 const withInterpolation = styled.div.attrs({
-  'data-qa': 'withInterpolation'
+  'data-qa': 'with-interpolation'
 })`
   color: ${Colors.black};
 `;
@@ -28,7 +28,7 @@ const el = styled(El).attrs({
 `;
 
 const arrowExpr = () => styled.div.attrs({
-  'data-qa': 'arrowExpr'
+  'data-qa': 'arrow-expr'
 })`
   color: black;
 `;

@@ -37,7 +37,7 @@ export default function TaggedTemplateExpression(path, state) {
   function insertBefore(node, id) {
     return t.callExpression(t.memberExpression(node, t.identifier('attrs')), [
       t.objectExpression([
-        t.objectProperty(t.StringLiteral(options.attribute), t.StringLiteral(id))
+        t.objectProperty(t.StringLiteral(options.attribute), t.StringLiteral(options.format(id)))
       ])
     ])
   }
