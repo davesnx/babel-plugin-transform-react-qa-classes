@@ -1,4 +1,5 @@
 import checkValidOptions from './options'
+import TaggedTemplateExpression from './styled-components'
 
 function isReactFragment (openingElement) {
   return (
@@ -44,6 +45,7 @@ function functionBodyPushAttributes (t, path, options, componentName) {
 export default function ({types: t}) {
   return {
     visitor: {
+      TaggedTemplateExpression,
       FunctionDeclaration (path, state) {
         if (!path.node.id || !path.node.id.name) return;
 
