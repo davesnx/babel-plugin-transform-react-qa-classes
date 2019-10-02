@@ -29,9 +29,9 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-        - run: |
-          echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-          npx semantic-release
+      - run: |
+        echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+        npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
