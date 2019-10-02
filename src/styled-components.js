@@ -31,13 +31,14 @@ export default function TaggedTemplateExpression(path, state) {
     }
   } catch (e) {}
 
-  return
-
   // hoisted helpers in closure
   function insertBefore(node, id) {
     return t.callExpression(t.memberExpression(node, t.identifier('attrs')), [
       t.objectExpression([
-        t.objectProperty(t.StringLiteral(options.attribute), t.StringLiteral(options.format(id)))
+        t.objectProperty(
+          t.StringLiteral(options.attribute),
+          t.StringLiteral(options.format(id))
+        )
       ])
     ])
   }
@@ -51,7 +52,7 @@ export default function TaggedTemplateExpression(path, state) {
       if (!t.isIdentifier(node)) return false
       const binding = scope.getBinding(node.name)
       if (!binding || binding.kind !== 'module') return false
-      return binding.path.parent.source.value == 'styled-components'
+      return binding.path.parent.source.value === 'styled-components'
     }
   }
   function getIdFrom(parentPath) {

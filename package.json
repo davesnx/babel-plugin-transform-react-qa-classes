@@ -14,11 +14,13 @@
     "build": "babel src -d lib",
     "test": "mocha --compilers js:babel-register",
     "test:watch": "yarn test -- --watch",
+    "lint": "eslint .",
     "prepublishOnly": "yarn clean && yarn build",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
+    "eslint-config-davesnx-rules": "^1.0.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.isstring": "^4.0.1",
     "lodash.kebabcase": "^4.1.1",
@@ -55,6 +57,7 @@
   ],
   "husky": {
     "hooks": {
+      "pre-commit": "npm run lint",
       "pre-push": "npm run test"
     }
   }
