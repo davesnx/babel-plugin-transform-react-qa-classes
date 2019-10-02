@@ -10,7 +10,7 @@ on:
 
 jobs:
   install:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -18,20 +18,19 @@ jobs:
           node-version: 12
       - run: |
           yarn install
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
           yarn test
 
   publish-npm:
     needs: install
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: |
-        echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-        npx semantic-release
+      - run: npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
