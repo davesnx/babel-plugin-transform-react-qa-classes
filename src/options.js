@@ -1,12 +1,14 @@
 import kebabCase from 'lodash.kebabcase'
 import camelCase from 'lodash.camelcase'
 import snakeCase from 'lodash.snakecase'
+import pascalCase from 'pascalcase'
 import isString from 'lodash.isstring'
 
 const langTransforms = {
   kebab: kebabCase,
   camel: camelCase,
-  snake: snakeCase
+  snake: snakeCase,
+  pascal: pascalCase
 }
 
 const isValidOption = opt => opt && isString(opt)
