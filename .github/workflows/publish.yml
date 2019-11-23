@@ -20,11 +20,6 @@ jobs:
           yarn install
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
           yarn test
-
-  publish-npm:
-    needs: install
-    runs-on: ubuntu-18.04
-    steps:
       - run: npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
