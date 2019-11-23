@@ -21,6 +21,7 @@ jobs:
           yarn test
       - name: Release
         run: |
+          yarn build
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
           npx semantic-release
         env:
