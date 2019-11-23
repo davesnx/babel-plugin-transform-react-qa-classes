@@ -18,9 +18,11 @@ jobs:
           node-version: 12
       - run: |
           yarn install
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
           yarn test
-      - run: npx semantic-release
+      - name: Release
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+          npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
