@@ -10,10 +10,7 @@ const langTransforms = {
 }
 
 const isValidOption = opt => opt && isString(opt)
-
-const validTranform = opt => {
-  return Object.keys(langTransforms).indexOf(opt) > -1
-}
+const validTranform = opt => Object.keys(langTransforms).indexOf(opt) > -1
 
 const checkValidOptions = state => {
   let attribute = 'data-qa'
