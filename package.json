@@ -39,6 +39,8 @@
     "pascalcase": "^1.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
     "@semantic-release/github": "^5.5.5",
     "@semantic-release/npm": "^5.3.4",
     "babel-cli": "6.24.1",
@@ -60,6 +62,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "npm run lint",
       "pre-push": "npm run test"
     }
