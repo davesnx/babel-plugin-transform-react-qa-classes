@@ -10,7 +10,7 @@ function isReactFragment(openingElement) {
   )
 }
 
-function applyDataAttribute({ openingElement, t, name, options }) {
+function applyAttribute({ openingElement, t, name, options }) {
   if (!openingElement || isReactFragment(openingElement)) return
 
   const isAttributeAlreadySet = openingElement.node.attributes.find(
@@ -48,7 +48,7 @@ function functionBodyPushAttributes(t, path, options, componentName) {
     openingElement = arg.get('openingElement')
   }
 
-  applyDataAttribute({ openingElement, t, name: componentName, options })
+  applyAttribute({ openingElement, t, name: componentName, options })
 }
 
 export default function({ types: t }) {
@@ -94,7 +94,7 @@ export default function({ types: t }) {
 
             const openingElement = arg.get('openingElement')
 
-            applyDataAttribute({
+            applyAttribute({
               openingElement,
               t,
               name: name.node && name.node.name,
