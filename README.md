@@ -93,7 +93,7 @@ You can specify the format of the name that you want and the name of the attribu
 }
 ```
 
-> Note: format can be: "camel" (camelCase), "snake" (snake_case) or "kebab" (kebab-case).
+> Note: format can be: "camel" (camelCase), "snake" (snake_case), "kebab" (kebab-case) or "pascal" (PascalCase).
 
 #### with CLI
 
