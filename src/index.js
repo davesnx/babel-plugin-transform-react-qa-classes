@@ -10,6 +10,23 @@ function isReactFragment(openingElement) {
   )
 }
 
+function applyDataAttribute({ openingElement, t, name, options }) {
+  if (!openingElement || isReactFragment(openingElement)) return
+
+  const isAttributeAlreadySet = openingElement.node.attributes.find(
+    node => node.name.name === options.attribute
+  )
+
+  if (isAttributeAlreadySet) return
+
+  openingElement.node.attributes.push(
+    t.jSXAttribute(
+      t.jSXIdentifier(options.attribute),
+      t.stringLiteral(options.format(name))
+    )
+  )
+}
+
 function functionBodyPushAttributes(t, path, options, componentName) {
   let openingElement = null
   const functionBody = path.get('body').get('body')
@@ -31,15 +48,7 @@ function functionBodyPushAttributes(t, path, options, componentName) {
     openingElement = arg.get('openingElement')
   }
 
-  if (!openingElement) return
-  if (isReactFragment(openingElement)) return
-
-  openingElement.node.attributes.push(
-    t.jSXAttribute(
-      t.jSXIdentifier(options.attribute),
-      t.stringLiteral(options.format(componentName))
-    )
-  )
+  applyDataAttribute({ openingElement, t, name: componentName, options })
 }
 
 export default function({ types: t }) {
@@ -84,14 +93,13 @@ export default function({ types: t }) {
             if (!arg.isJSXElement()) return
 
             const openingElement = arg.get('openingElement')
-            if (isReactFragment(openingElement)) return
 
-            openingElement.node.attributes.push(
-              t.jSXAttribute(
-                t.jSXIdentifier(options.attribute),
-                t.stringLiteral(options.format(name.node && name.node.name))
-              )
-            )
+            applyDataAttribute({
+              openingElement,
+              t,
+              name: name.node && name.node.name,
+              options
+            })
           }
         })
       }
