@@ -13,9 +13,10 @@ function isReactFragment(openingElement) {
 function applyAttribute({ openingElement, t, name, options }) {
   if (!openingElement || isReactFragment(openingElement)) return
 
-  const isAttributeAlreadySet = openingElement.node.attributes.find(
-    node => node.name.name === options.attribute
-  )
+  const isAttributeAlreadySet = openingElement.node.attributes.find(node => {
+    if (!node.name) return
+    return node.name.name === options.attribute
+  })
 
   if (isAttributeAlreadySet) return
 
