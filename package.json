@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-react-qa-classes",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "license": "MIT",
   "description": "Add component's name in `data-qa` attributes to React Components Edit",
   "repository": {
