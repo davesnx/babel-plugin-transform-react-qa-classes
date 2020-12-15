@@ -11,27 +11,23 @@ This babel plugin adds the component name as a `data-qa` in each React Component
   <tr>
     <td>
       <pre>
-class componentName extends Component {
-  render () {
-    return (
-      &lt;div&gt;
-        &lt;div&gt;Hello world&lt;/div&gt;
-      &lt;/div&gt;
-    )
-  }
+function FancyComponent () {
+  return (
+    &lt;div&gt;
+      &lt;div&gt;Hello world&lt;/div&gt;
+    &lt;/div&gt;
+  )
 }
       </pre>
     </td>
     <td>
       <pre>
-class componentName extends Component {
-  render () {
-    return (
-      &lt;div data-qa='component-name'&gt;
-        &lt;div&gt;Hello world&lt;/div&gt;
-      &lt;/div&gt;
-    )
-  }
+function FancyComponent () {
+  return (
+    &lt;div data-qa='fancy-component'&gt;
+      &lt;div&gt;Hello world&lt;/div&gt;
+    &lt;/div&gt;
+  )
 }
       </pre>
     </td>
@@ -39,6 +35,16 @@ class componentName extends Component {
 </table>
 
 > This plugin asumes that you are using [React](https://reactjs.org) and [Babel](https://babeljs.io) as a building tool to generate your bundle.
+
+### Features
+Works with:
+- class components
+- styled-components
+- arrow components
+- without JSX
+- supports fragments
+- option to configure the attribute name (default `data-qa`)
+- formats different the value of the attribute (default `camelCase`)
 
 ### Why?
 
