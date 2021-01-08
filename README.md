@@ -42,7 +42,6 @@ Works with:
 - styled-components
 - arrow components
 - without JSX
-- supports fragments
 - option to configure the attribute name (default `data-qa`)
 - formats different the value of the attribute (default `camelCase`)
 
